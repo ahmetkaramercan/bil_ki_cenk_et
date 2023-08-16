@@ -112,9 +112,6 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
-        [Header("Enemy Movement Properties")]
-        private NavMeshAgent agent;
-
         public Transform player;
 
         private bool IsCurrentDeviceMouse
@@ -141,9 +138,7 @@ namespace StarterAssets
 
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
-            agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-            Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
-
+            
             AssignAnimationIDs();
 
             // reset our timeouts on start
@@ -229,6 +224,9 @@ namespace StarterAssets
             Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
                 QueryTriggerInteraction.Ignore);
 
+            Debug.Log("_hasAnimator value:\t" + _hasAnimator);
+            Debug.Log("Grounded value:\t" + Grounded);
+
             // update animator if using character
             if (_hasAnimator)
             {
@@ -240,12 +238,6 @@ namespace StarterAssets
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = MoveSpeed;
-
-            // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
-
-            // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-            // if there is no input, set the target speed to 0
-            //if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -274,11 +266,7 @@ namespace StarterAssets
             if (_animationBlend < 0.01f) _animationBlend = 0f;
 
             // normalise input direction
-            Vector3 inputDirection = new Vector3(player.position.x - this.transform.position.x , 0.0f, player.position.y - this.transform.position.y).normalized;
-
-            // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-            // if there is a move input rotate player when the player is moving
-
+            Vector3 inputDirection = new Vector3(player.transform.position.x - this.transform.position.x , 0.0f, player.transform.position.y - this.transform.position.y).normalized;
 
             if (!player.position.Equals(this.transform.position))
             {
@@ -298,12 +286,15 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
+                //Debug.Log(_animationBlend);
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
 
             //agent.SetDestination(player.position);
         }
+
+       
 
         private void JumpAndGravity()
         {
