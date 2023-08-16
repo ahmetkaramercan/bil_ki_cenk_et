@@ -1,13 +1,25 @@
+using System;
+using System.Numerics;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem.XR;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 using UnityEngine.Windows;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using static UnityEditor.PlayerSettings;
+using Quaternion = UnityEngine.Quaternion;
+using Random = UnityEngine.Random;
+using Vector3 = UnityEngine.Vector3;
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
 
 namespace StarterAssets
 {
-    [RequireComponent(typeof(CharacterController))]
+    //[RequireComponent(typeof(CharacterController))]
     public class CharacterControllerEnemy : MonoBehaviour
     {
         [Header("Player")]
@@ -105,7 +117,7 @@ namespace StarterAssets
         private bool readyToThrow;
 
         private Animator _animator;
-        private CharacterController _controller;
+        //private CharacterController _controller;
         private GameObject _mainCamera;
 
         private const float _threshold = 0.01f;
@@ -113,6 +125,7 @@ namespace StarterAssets
         private bool _hasAnimator;
 
         public Transform player;
+        private Rigidbody _rb;
 
         private bool IsCurrentDeviceMouse
         {
@@ -137,7 +150,8 @@ namespace StarterAssets
             //_cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
 
             _hasAnimator = TryGetComponent(out _animator);
-            _controller = GetComponent<CharacterController>();
+            //_controller = GetComponent<CharacterController>();
+            _rb = GetComponent<Rigidbody>();
             
             AssignAnimationIDs();
 
@@ -234,67 +248,63 @@ namespace StarterAssets
             }
         }
 
+
         private void Move()
         {
-            // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = MoveSpeed;
-
-            // a reference to the players current horizontal velocity
-            float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
-
-            float speedOffset = 0.1f;
-            float inputMagnitude = 1f;
-
-            // accelerate or decelerate to target speed
-            if (currentHorizontalSpeed < targetSpeed - speedOffset ||
-                currentHorizontalSpeed > targetSpeed + speedOffset)
+            if (player == null)
             {
-                // creates curved result rather than a linear one giving a more organic speed change
-                // note T in Lerp is clamped, so we don't need to clamp our speed
-                _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
-                    Time.deltaTime * SpeedChangeRate);
-
-                // round speed to 3 decimal places
-                _speed = Mathf.Round(_speed * 1000f) / 1000f;
-            }
-            else
-            {
-                _speed = targetSpeed;
+                return;
             }
 
-            _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
-            if (_animationBlend < 0.01f) _animationBlend = 0f;
+            // Calculate input direction
+            Vector3 inputDirection = player.position - _rb.position;
+            inputDirection.y = 0f; // Ignore vertical component
+            float inputMagnitude = inputDirection.magnitude;
 
-            // normalise input direction
-            Vector3 inputDirection = new Vector3(player.transform.position.x - this.transform.position.x , 0.0f, player.transform.position.y - this.transform.position.y).normalized;
-
-            if (!player.position.Equals(this.transform.position))
+            // Normalize input direction only if it's not too small
+            if (inputMagnitude > 0.01f)
             {
-                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg ;
-                float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
-                    RotationSmoothTime);
+                inputDirection.Normalize();
 
-                // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                // Calculate target rotation
+                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
+
+                // Smoothly rotate to face the target direction
+                float rotation = Mathf.SmoothDampAngle(_rb.rotation.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
+                _rb.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
             }
 
-            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
-            // move the player
-            _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            // Set target speed based on move speed, sprint speed, and input magnitude
+            float targetSpeed = Mathf.Lerp(0f, MoveSpeed, inputMagnitude);
 
-            // update animator if using character
-            if (_hasAnimator)
+            // Calculate the desired velocity based on the target speed and direction
+            Vector3 desiredVelocity = inputDirection * targetSpeed;
+
+            // Apply horizontal movement to the rigidbody only if grounded
+            if (Grounded)
             {
-                //Debug.Log(_animationBlend);
-                _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                desiredVelocity.y = _rb.velocity.y; // Maintain the vertical velocity
+                _rb.velocity = desiredVelocity;
             }
 
-            //agent.SetDestination(player.position);
+            // Update animator if available
+            if (_animator != null)
+            {
+                _animator.SetFloat("Speed", desiredVelocity.magnitude);
+                _animator.SetFloat("MotionSpeed", 1f);
+            }
+
+            // Apply gravity manually if not grounded
+            if (!Grounded)
+            {
+                _rb.AddForce(Vector3.up * Gravity, ForceMode.Acceleration);
+            }
         }
 
-       
+
+
+
+
 
         private void JumpAndGravity()
         {
@@ -378,7 +388,7 @@ namespace StarterAssets
                 if (FootstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, FootstepAudioClips.Length);
-                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(transform.position), FootstepAudioVolume);
                 }
             }
         }
@@ -387,7 +397,7 @@ namespace StarterAssets
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
-                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(transform.position), FootstepAudioVolume);
             }
         }
     }
