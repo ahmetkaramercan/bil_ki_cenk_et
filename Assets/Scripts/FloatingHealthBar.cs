@@ -23,4 +23,9 @@ public class FloatingHealthBar : MonoBehaviour
         _healthBar.value = curValue / maxValue;
     }
 
+    public float getHealth()
+    {
+        return _healthBar.value;
+    }
+
 }

@@ -1,5 +1,8 @@
-﻿ using UnityEngine;
-#if ENABLE_INPUT_SYSTEM 
+﻿using UnityEngine;
+using System.Collections;
+using System.Runtime.Serialization;
+using System;
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
 
@@ -124,7 +127,9 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
-        [SerializeField] FloatingHealthBar _healthBar;
+        FloatingHealthBar _healthBar;
+        [SerializeField]private float _maxHealth = 100;
+        [SerializeField] private float _fireDamage = 0.04f;
 
         private bool IsCurrentDeviceMouse
         {
@@ -162,7 +167,7 @@ namespace StarterAssets
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
             AssignAnimationIDs();
-            _healthBar.UpdateHealthBar(0.5f,1f);
+            //_healthBar.UpdateHealthBar(0.5f,1f);
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
@@ -438,7 +443,7 @@ namespace StarterAssets
             {
                 if (FootstepAudioClips.Length > 0)
                 {
-                    var index = Random.Range(0, FootstepAudioClips.Length);
+                    var index = UnityEngine.Random.Range(0, FootstepAudioClips.Length);
                     AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
                 }
             }
@@ -451,5 +456,16 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
+        void OnParticleCollision(GameObject obj)
+        {
+            String particalName = obj.name;
+
+            if (particalName.Equals("FireParticles"))
+            {
+                Debug.Log("I am firing!!");
+                _healthBar.UpdateHealthBar(_healthBar.getHealth()*_maxHealth - _fireDamage, _maxHealth);
+            }
+        }
     }
+
 }

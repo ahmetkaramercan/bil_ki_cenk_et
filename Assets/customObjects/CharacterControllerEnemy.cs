@@ -238,7 +238,6 @@ namespace StarterAssets
             Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
                 QueryTriggerInteraction.Ignore);
 
-            Debug.Log("_hasAnimator value:\t" + _hasAnimator);
             Debug.Log("Grounded value:\t" + Grounded);
 
             // update animator if using character
