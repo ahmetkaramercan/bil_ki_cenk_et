@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class EnemyMovementDragon : MonoBehaviour
 {
     private Transform _player;
-    private Slider _healthBar;
+    private FloatingHealthBar _healthBar;
     [SerializeField]
     private float MAX_DISTANCE_FOR_AWAKE = 10f;
     [SerializeField]
@@ -32,7 +32,7 @@ public class EnemyMovementDragon : MonoBehaviour
         _player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         _hasAnimator = TryGetComponent(out _animator);
         _fireParticle = GetComponentInChildren<ParticleSystem>();
-        _healthBar = GetComponentInChildren<Slider>();
+        _healthBar = GetComponentInChildren<FloatingHealthBar>();
         _rb = GetComponent<Rigidbody>();
         _fireParticle.Stop();
         _closeEnoughToFire = false;
@@ -143,5 +143,13 @@ public class EnemyMovementDragon : MonoBehaviour
             _rb.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
         }
      
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name.Equals(""))
+        {
+
+        }
     }
 }

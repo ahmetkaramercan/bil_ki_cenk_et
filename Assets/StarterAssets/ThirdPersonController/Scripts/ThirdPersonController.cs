@@ -204,11 +204,13 @@ namespace StarterAssets
             {
                 //_animator.SetBool("Aiming", _input.isAiming);
                 readyToThrow = false;
-                Debug.Log("attack point:" + attackPointForThrow.transform.position);
-                Debug.Log("camera rotation:" + cameraForThrowing.transform.rotation);
-                GameObject projectile = Instantiate(objectToThrow, attackPointForThrow.transform.position, cameraForThrowing.transform.rotation);
-                Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
+                //Debug.Log("attack point:" + attackPointForThrow.transform.position);
+                //Debug.Log("camera rotation:" + cameraForThrowing.transform.rotation);
 
+                GameObject projectile = Instantiate(objectToThrow, attackPointForThrow.transform.position, Quaternion.LookRotation(cameraForThrowing.transform.forward) * Quaternion.Euler(90, 0, 0));
+                
+
+                Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
                 Vector3 forceToAdd = cameraForThrowing.transform.forward * throwForce + transform.up * throwUpwardForce;
 
                 projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
@@ -223,6 +225,12 @@ namespace StarterAssets
                // _animator.SetBool("Aiming", false);
             }
         }
+
+        /*private IEnumerator Destroyer(GameObject obj, float time)
+        {
+            yield return new WaitForSeconds(time);
+            Destroy(obj);
+        }*/
 
         private void resetThrow()
         {
@@ -462,7 +470,6 @@ namespace StarterAssets
 
             if (particalName.Equals("FireParticles"))
             {
-                Debug.Log("I am firing!!");
                 _healthBar.UpdateHealthBar(_healthBar.getHealth()*_maxHealth - _fireDamage, _maxHealth);
             }
         }
