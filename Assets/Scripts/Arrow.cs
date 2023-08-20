@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class Arrow : MonoBehaviour
 {
     public GameObject PoisonEffect;
     public Transform spawnPoint;
+    private GameObject _particle;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +18,9 @@ public class Arrow : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Instantiate(PoisonEffect, spawnPoint.position, Quaternion.identity);
-            Debug.Log("Particle Collision Enter!!");
+            _particle = Instantiate(PoisonEffect, spawnPoint.position, Quaternion.identity);
+            Invoke("DestroyParticle", 5);
+            //Debug.Log("Particle Collision Enter!!");
         }
         //Debug.Log("Collision Enter!!");
         DestroyYourself();
@@ -26,5 +29,10 @@ public class Arrow : MonoBehaviour
     void DestroyYourself()
     {
         Destroy(gameObject);
+    }
+
+    void DestroyParticle()
+    {
+        Destroy(_particle);
     }
 }

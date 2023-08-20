@@ -5,6 +5,7 @@ using UnityEngine;
 public class PoisionCapsule : MonoBehaviour
 {
     public GameObject PoisonEffect;
+    private GameObject _particle;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,8 @@ public class PoisionCapsule : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Instantiate(PoisonEffect, this.transform.position, Quaternion.identity);
+            _particle = Instantiate(PoisonEffect, this.transform.position, Quaternion.identity);
+            Invoke("DestroyParticle", 5);
             //Debug.Log("Particle Collision Enter!!");
         }
         //Debug.Log("Collision Enter!!");
@@ -25,5 +27,10 @@ public class PoisionCapsule : MonoBehaviour
     void DestroyYourself()
     {
         Destroy(gameObject);
+    }
+
+    void DestroyParticle()
+    {
+        Destroy(_particle);
     }
 }

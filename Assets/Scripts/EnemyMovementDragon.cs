@@ -38,17 +38,15 @@ public class EnemyMovementDragon : MonoBehaviour
     {
         _player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         _hasAnimator = TryGetComponent(out _animator);
-        _fireParticle = GetComponentInChildren<ParticleSystem>();
         _healthBar = GetComponentInChildren<FloatingHealthBar>();
         _rb = GetComponent<Rigidbody>();
-        _fireParticle.Stop();
         _closeEnoughToFire = false;
 
 
         String _playerName = this.gameObject.name;
-        if (_playerName.Equals("Enemy"))
+        if (_playerName.Equals("BloodThirstyEnemy"))
         {
-            _fireParticle = null;
+            _fireParticle = GetComponentInChildren<ParticleSystem>();
             _fireDamage = 0.1f;
             _iceDamage = 0.2f;
             _poisionDamage = 0.4f;
@@ -65,7 +63,7 @@ public class EnemyMovementDragon : MonoBehaviour
             _bombDamage = 0.1f;
 
         }
-        else if (_playerName.Equals("Enemy"))
+        else if (_playerName.Equals("IceEnemy"))
         {
             _fireParticle = GetComponentInChildren<ParticleSystem>();
             _fireParticle.Stop();
@@ -75,9 +73,10 @@ public class EnemyMovementDragon : MonoBehaviour
             _bombDamage = 0.2f;
 
         }
-        else if (_playerName.Equals("Enemy"))
+        else if (_playerName.Equals("PoisionEnemy"))
         {
-            _fireParticle = null;
+            _fireParticle = GetComponentInChildren<ParticleSystem>();
+            _fireParticle.Stop();
             _fireDamage = 0.2f;
             _iceDamage = 0.1f;
             _poisionDamage = 0.05f;
@@ -136,7 +135,7 @@ public class EnemyMovementDragon : MonoBehaviour
         {
             _animator.SetBool(_animIDAwake, isAwake);
             _animator.SetBool(_animIDCloseEnough, closeEnoughToFire);
-            //_animator.SetBool(_animIDDie, _healthBar.getValue() <= 0f);
+            _animator.SetBool(_animIDDie, _healthBar.getHealth() <= 0f);
 
         }
     }
@@ -195,21 +194,23 @@ public class EnemyMovementDragon : MonoBehaviour
 
     void OnParticleCollision(GameObject obj)
     {
-        String particalName = obj.name;
-        if (particalName.Equals("FireParticles"))
+        String particalTag= obj.tag;
+        Debug.Log("Particle tag: 0" + particalTag);
+        if (particalTag.Equals("FireParticle"))
         {
             _healthBar.UpdateHealthBar(_healthBar.getHealth() * _maxHealth - _fireDamage, _maxHealth);
         }
-        else if (particalName.Equals("IceParticles"))
+        else if (particalTag.Equals("IceParticle"))
         {
             _healthBar.UpdateHealthBar(_healthBar.getHealth() * _maxHealth - _iceDamage, _maxHealth);
         }
-        else if (particalName.Equals("PoisionParticles"))
+        else if (particalTag.Equals("PoisionParticle"))
         {
             _healthBar.UpdateHealthBar(_healthBar.getHealth() * _maxHealth - _poisionDamage, _maxHealth);
         }
-        else if (particalName.Equals("BloodParticles"))
+        else if (particalTag.Equals("BloodParticle"))
         {
+            Debug.Log("Particle tag: 1" + particalTag);
             _healthBar.UpdateHealthBar(_healthBar.getHealth() * _maxHealth - _bombDamage, _maxHealth);
         }
     }

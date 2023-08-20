@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1603793564818567143}
   m_Layer: 0
   m_Name: IceParticles
-  m_TagString: Untagged
+  m_TagString: IcePartical
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

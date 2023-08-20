@@ -1,3 +1,4 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -115,36 +116,43 @@ public class GameManager : MonoBehaviour
 
     private void setActivePlayer(int activePlayer)
     {
+        if (_activePlayer == activePlayer) return;
+
         Quaternion oldRot = player[_activePlayer].transform.rotation;
         Vector3 oldPos = player[_activePlayer].transform.position;
+        float oldHealth = player[_activePlayer].GetComponent<PlayerController>().getHealth();
         switch (activePlayer)
         {
             case 0:
-                player[0].SetActive(true);
                 player[_activePlayer].SetActive(false);
+                player[0].SetActive(true);
                 player[0].transform.rotation = oldRot;
                 player[0].transform.position = oldPos;
+                player[0].GetComponent<PlayerController>().setHealth(oldHealth);
                 _activePlayer = 0;
                 break;
             case 1:
-                player[1].SetActive(true);
                 player[_activePlayer].SetActive(false);
+                player[1].SetActive(true);
                 player[1].transform.rotation = oldRot;
                 player[1].transform.position = oldPos;
+                player[1].GetComponent<PlayerController>().setHealth(oldHealth);
                 _activePlayer = 1;
                 break;
             case 2:
-                player[2].SetActive(true);
                 player[_activePlayer].SetActive(false);
+                player[2].SetActive(true);
                 player[2].transform.rotation = oldRot;
                 player[2].transform.position = oldPos;
+                player[2].GetComponent<PlayerController>().setHealth(oldHealth);
                 _activePlayer = 2;
                 break;
             case 3:
-                player[3].SetActive(true);
                 player[_activePlayer].SetActive(false);
+                player[3].SetActive(true);
                 player[3].transform.rotation = oldRot;
                 player[3].transform.position = oldPos;
+                player[3].GetComponent<PlayerController>().setHealth(oldHealth);
                 _activePlayer = 3;
                 break;
             case 4:

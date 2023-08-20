@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.Serialization;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.Assertions;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -228,6 +229,9 @@ namespace StarterAssets
 
         private void Update()
         {
+            try
+            {
+
             _hasAnimator = TryGetComponent(out _animator);
 
             JumpAndGravity();
@@ -243,13 +247,27 @@ namespace StarterAssets
             }
             Shoot();
             isDie();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
         }
 
+        public float getHealth()
+        {
+            return _healthBar.getHealth() * _maxHealth;
+        }
+
+        public void setHealth(float health)
+        {
+            _healthBar.UpdateHealthBar(health, _maxHealth);
+        }
         private void isDie()
         {
             if (_healthBar.getHealth() == 0f)
             {
-                SceneManager.LoadScene("EndScene");
+                //SceneManager.LoadScene("EndScene");
             }
         }
 

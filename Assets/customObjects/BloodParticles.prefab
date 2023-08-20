@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2931441029016976707}
   m_Layer: 0
   m_Name: BloodParticles
-  m_TagString: Untagged
+  m_TagString: BloodParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
