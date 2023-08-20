@@ -1,5 +1,8 @@
-﻿ using UnityEngine;
-#if ENABLE_INPUT_SYSTEM 
+﻿using UnityEngine;
+using System.Collections;
+using System.Runtime.Serialization;
+using System;
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
 
@@ -124,7 +127,9 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
-        [SerializeField] FloatingHealthBar _healthBar;
+        FloatingHealthBar _healthBar;
+        [SerializeField]private float _maxHealth = 100;
+        [SerializeField] private float _fireDamage = 0.04f;
 
         private bool IsCurrentDeviceMouse
         {
@@ -162,7 +167,7 @@ namespace StarterAssets
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
             AssignAnimationIDs();
-            _healthBar.UpdateHealthBar(0.5f,1f);
+            //_healthBar.UpdateHealthBar(0.5f,1f);
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
@@ -199,11 +204,13 @@ namespace StarterAssets
             {
                 //_animator.SetBool("Aiming", _input.isAiming);
                 readyToThrow = false;
-                Debug.Log("attack point:" + attackPointForThrow.transform.position);
-                Debug.Log("camera rotation:" + cameraForThrowing.transform.rotation);
-                GameObject projectile = Instantiate(objectToThrow, attackPointForThrow.transform.position, cameraForThrowing.transform.rotation);
-                Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
+                //Debug.Log("attack point:" + attackPointForThrow.transform.position);
+                //Debug.Log("camera rotation:" + cameraForThrowing.transform.rotation);
 
+                GameObject projectile = Instantiate(objectToThrow, attackPointForThrow.transform.position, Quaternion.LookRotation(cameraForThrowing.transform.forward) * Quaternion.Euler(90, 0, 0));
+                
+
+                Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
                 Vector3 forceToAdd = cameraForThrowing.transform.forward * throwForce + transform.up * throwUpwardForce;
 
                 projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
@@ -218,6 +225,12 @@ namespace StarterAssets
                // _animator.SetBool("Aiming", false);
             }
         }
+
+        /*private IEnumerator Destroyer(GameObject obj, float time)
+        {
+            yield return new WaitForSeconds(time);
+            Destroy(obj);
+        }*/
 
         private void resetThrow()
         {
@@ -438,7 +451,7 @@ namespace StarterAssets
             {
                 if (FootstepAudioClips.Length > 0)
                 {
-                    var index = Random.Range(0, FootstepAudioClips.Length);
+                    var index = UnityEngine.Random.Range(0, FootstepAudioClips.Length);
                     AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
                 }
             }
@@ -451,5 +464,15 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
+        void OnParticleCollision(GameObject obj)
+        {
+            String particalName = obj.name;
+
+            if (particalName.Equals("FireParticles"))
+            {
+                _healthBar.UpdateHealthBar(_healthBar.getHealth()*_maxHealth - _fireDamage, _maxHealth);
+            }
+        }
     }
+
 }
