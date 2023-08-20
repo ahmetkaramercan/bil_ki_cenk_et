@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,9 +26,15 @@ public class EnemyMovementDragon : MonoBehaviour
     private float _rotationVelocity;
     [SerializeField]
     private float MoveSpeed = -15f;
+
+    [SerializeField] private float _maxHealth = 100f;
+    private float _fireDamage;
+    private float _iceDamage;
+    private float _poisionDamage;
+    private float _bombDamage;
     // Start is called before the first frame update
 
-    private void Awake()
+    private void OnEnable()
     {
         _player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         _hasAnimator = TryGetComponent(out _animator);
@@ -36,6 +43,46 @@ public class EnemyMovementDragon : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _fireParticle.Stop();
         _closeEnoughToFire = false;
+
+
+        String _playerName = this.gameObject.name;
+        if (_playerName.Equals("Enemy"))
+        {
+            _fireParticle = null;
+            _fireDamage = 0.1f;
+            _iceDamage = 0.2f;
+            _poisionDamage = 0.4f;
+            _bombDamage = 0.05f;
+
+        }
+        else if (_playerName.Equals("EnemyDragon"))
+        {
+            _fireParticle = GetComponentInChildren<ParticleSystem>();
+            _fireParticle.Stop();
+            _fireDamage = 0.05f;
+            _iceDamage = 0.4f;
+            _poisionDamage = 0.2f;
+            _bombDamage = 0.1f;
+
+        }
+        else if (_playerName.Equals("Enemy"))
+        {
+            _fireParticle = GetComponentInChildren<ParticleSystem>();
+            _fireParticle.Stop();
+            _fireDamage = 0.4f;
+            _iceDamage = 0.05f;
+            _poisionDamage = 0.1f;
+            _bombDamage = 0.2f;
+
+        }
+        else if (_playerName.Equals("Enemy"))
+        {
+            _fireParticle = null;
+            _fireDamage = 0.2f;
+            _iceDamage = 0.1f;
+            _poisionDamage = 0.05f;
+            _bombDamage = 0.4f;
+        }
     }
     void Start()
     {
@@ -48,7 +95,7 @@ public class EnemyMovementDragon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_player != null)
+        if(!isDie() && _player != null)
         {
             SetAnimationAndParticles();
             if (_animator.GetBool(_animIDAwake) && !_animator.GetBool(_animIDCloseEnough))
@@ -61,6 +108,7 @@ public class EnemyMovementDragon : MonoBehaviour
                 Rotate();
             }
         }
+        
         
     }
 
@@ -117,7 +165,7 @@ public class EnemyMovementDragon : MonoBehaviour
         float targetSpeed = Mathf.Lerp(0f, MoveSpeed, inputMagnitude);
 
         // Calculate the desired velocity based on the target speed and direction
-        Vector3 desiredVelocity = -1*inputDirection * targetSpeed;
+        Vector3 desiredVelocity = inputDirection * targetSpeed;
 
         // Apply horizontal movement to the rigidbody only if grounded
         desiredVelocity.y = _rb.velocity.y; // Maintain the vertical velocity
@@ -145,11 +193,40 @@ public class EnemyMovementDragon : MonoBehaviour
      
     }
 
-    private void OnCollisionEnter(Collision col)
+    void OnParticleCollision(GameObject obj)
     {
-        if (col.gameObject.name.Equals(""))
+        String particalName = obj.name;
+        if (particalName.Equals("FireParticles"))
         {
-
+            _healthBar.UpdateHealthBar(_healthBar.getHealth() * _maxHealth - _fireDamage, _maxHealth);
         }
+        else if (particalName.Equals("IceParticles"))
+        {
+            _healthBar.UpdateHealthBar(_healthBar.getHealth() * _maxHealth - _iceDamage, _maxHealth);
+        }
+        else if (particalName.Equals("PoisionParticles"))
+        {
+            _healthBar.UpdateHealthBar(_healthBar.getHealth() * _maxHealth - _poisionDamage, _maxHealth);
+        }
+        else if (particalName.Equals("BloodParticles"))
+        {
+            _healthBar.UpdateHealthBar(_healthBar.getHealth() * _maxHealth - _bombDamage, _maxHealth);
+        }
+    }
+
+    private bool isDie()
+    {
+        if (_healthBar.getHealth() == 0f)
+        {
+            Invoke("DestroyYourself", 3);
+            _animator.SetBool(_animIDDie, true);
+            return true;
+        }
+        return false;
+    }
+
+    void DestroyYourself()
+    {
+        Destroy(gameObject);
     }
 }

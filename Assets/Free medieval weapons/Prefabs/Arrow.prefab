@@ -296,6 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b5a215f422e8e49a344ef94a9e2284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PoisonEffect: {fileID: 2348896006146425628, guid: 7dc20892f7bb5fa47942bd5de1f3a611,
+  PoisonEffect: {fileID: 3114898131865775154, guid: 1757de45972ebc74fa2aafa4aa00be55,
     type: 3}
   spawnPoint: {fileID: 4668755794025904}
