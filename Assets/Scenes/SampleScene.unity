@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17757793, g: 0.22232169, b: 0.30451825, a: 1}
+  m_IndirectSpecularColor: {r: 0.1775779, g: 0.22232151, b: 0.304518, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -543,11 +543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 0}
-  nextText:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  nextEnemy:
   - {fileID: 0}
 --- !u!65 &89947326
 BoxCollider:
@@ -564,7 +560,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -934,12 +930,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 0}
-  nextText:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  nextEnemy:
+  - {fileID: 2000503246}
 --- !u!65 &137855059
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -955,7 +947,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1369,7 +1361,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1952,7 +1944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 196.388, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 409.9, y: 43.63}
+  m_AnchoredPosition: {x: 409.9, y: 22.7}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &393600769
@@ -2053,7 +2045,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2504,7 +2496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 99.671, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 575.1, y: 23.4}
+  m_AnchoredPosition: {x: 575.1, y: 20.4}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &449437724
@@ -2518,6 +2510,10 @@ PrefabInstance:
     - target: {fileID: 139696, guid: eb58e8f2831a51f45a44a261e6710cdd, type: 3}
       propertyPath: m_Name
       value: EnemyDragon
+      objectReference: {fileID: 0}
+    - target: {fileID: 139696, guid: eb58e8f2831a51f45a44a261e6710cdd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 485588, guid: eb58e8f2831a51f45a44a261e6710cdd, type: 3}
       propertyPath: m_RootOrder
@@ -2566,18 +2562,24 @@ PrefabInstance:
     - target: {fileID: 3463451773532074993, guid: eb58e8f2831a51f45a44a261e6710cdd,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3463451773532074993, guid: eb58e8f2831a51f45a44a261e6710cdd,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb58e8f2831a51f45a44a261e6710cdd, type: 3}
+--- !u!1 &449437725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 139696, guid: eb58e8f2831a51f45a44a261e6710cdd,
+    type: 3}
+  m_PrefabInstance: {fileID: 449437724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &454364379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2625,7 +2627,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2798,6 +2800,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoisionEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2864586455162836719, guid: 8b0f3236320766346927930c8ae5b7b6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4675070606648005628, guid: 8b0f3236320766346927930c8ae5b7b6,
         type: 3}
       propertyPath: m_RootOrder
@@ -2856,12 +2863,12 @@ PrefabInstance:
     - target: {fileID: 6417019665360889336, guid: 8b0f3236320766346927930c8ae5b7b6,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6417019665360889336, guid: 8b0f3236320766346927930c8ae5b7b6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8542099307152308967, guid: 8b0f3236320766346927930c8ae5b7b6,
         type: 3}
@@ -2878,6 +2885,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b0f3236320766346927930c8ae5b7b6, type: 3}
+--- !u!1 &556094380 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2864586455162836719, guid: 8b0f3236320766346927930c8ae5b7b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 556094379}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &581012613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3668,6 +3681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 922549159886492549, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
         type: 3}
+      propertyPath: nextText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 922549159886492549, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
+        type: 3}
       propertyPath: MAX_DISTANCE_FOR_FIRE
       value: 10
       objectReference: {fileID: 0}
@@ -3676,26 +3694,42 @@ PrefabInstance:
       propertyPath: MAX_DISTANCE_FOR_AWAKE
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 922549159886492549, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
+        type: 3}
+      propertyPath: nextText.Array.data[0]
+      value: 
+      objectReference: {fileID: 1701204209}
     - target: {fileID: 6037528259715667010, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
         type: 3}
       propertyPath: m_Name
       value: IceEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 6285678423789567357, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
+    - target: {fileID: 6037528259715667010, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
         type: 3}
-      propertyPath: m_AnchorMax.x
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6285678423789567357, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
         type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285678423789567357, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
+        type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3a30bbe5f5ff384e9c6d0c584a003fb, type: 3}
+--- !u!1 &689060360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6037528259715667010, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 689060359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &717405076
 GameObject:
   m_ObjectHideFlags: 0
@@ -3743,7 +3777,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -4038,7 +4072,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -4586,7 +4620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 12.089996, y: -7.27}
+  m_AnchoredPosition: {x: 12.089996, y: -7.269989}
   m_SizeDelta: {x: 202.66, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1141461086
@@ -4713,12 +4747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 0}
-  nextText:
-  - {fileID: 1701204209}
-  - {fileID: 89947324}
-  - {fileID: 88789489}
-  - {fileID: 155795521}
-  - {fileID: 401536656}
+  nextEnemy:
+  - {fileID: 689060360}
 --- !u!65 &1295916584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4891,7 +4921,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 196.388, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0002746582, y: -19.530005}
+  m_AnchoredPosition: {x: -0.0002746582, y: -9.8}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1503746752
@@ -5148,7 +5178,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -5355,7 +5385,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -5548,12 +5578,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 0}
-  nextText:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  nextEnemy:
+  - {fileID: 449437725}
 --- !u!65 &1680386626
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5904,7 +5930,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 196.388, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 368.6, y: 16.5}
+  m_AnchoredPosition: {x: 368.6, y: 20.8}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1723382489
@@ -6160,7 +6186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 99.671, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 677.6, y: 54.950005}
+  m_AnchoredPosition: {x: 677.6, y: 21.1}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1870629220
@@ -6210,7 +6236,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -6403,12 +6429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 0}
-  nextText:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  nextEnemy:
+  - {fileID: 556094380}
 --- !u!65 &1966282876
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6424,7 +6446,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -6732,17 +6754,22 @@ PrefabInstance:
     - target: {fileID: 568534453051858654, guid: be17295c94c4e2c49a9f57ddfc31f123,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 568534453051858654, guid: be17295c94c4e2c49a9f57ddfc31f123,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3429736665078317742, guid: be17295c94c4e2c49a9f57ddfc31f123,
         type: 3}
       propertyPath: m_Name
       value: BloodThirstyEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429736665078317742, guid: be17295c94c4e2c49a9f57ddfc31f123,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3602292779374980407, guid: be17295c94c4e2c49a9f57ddfc31f123,
         type: 3}
@@ -6814,3 +6841,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be17295c94c4e2c49a9f57ddfc31f123, type: 3}
+--- !u!1 &2000503246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3429736665078317742, guid: be17295c94c4e2c49a9f57ddfc31f123,
+    type: 3}
+  m_PrefabInstance: {fileID: 2000503245}
+  m_PrefabAsset: {fileID: 0}

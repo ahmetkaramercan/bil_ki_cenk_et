@@ -34,6 +34,9 @@ public class EnemyMovementDragon : MonoBehaviour
     private float _bombDamage;
     // Start is called before the first frame update
 
+    [SerializeField]
+    private GameObject[] nextText = new GameObject[1];
+
     private void OnEnable()
     {
         _player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
@@ -106,6 +109,9 @@ public class EnemyMovementDragon : MonoBehaviour
             {
                 Rotate();
             }
+        }
+        else if(isDie()){
+            nextText[0].SetActive(true);
         }
         
         
