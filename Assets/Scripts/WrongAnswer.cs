@@ -10,5 +10,7 @@ public class WrongAnswer : MonoBehaviour
             print("WRONGGGGG"); 
         }
         print("WRONG");
+        Debug.Log("Bu script " + gameObject.name + " objesine bağlıdır."); // Ice D 
+
     }
 }
