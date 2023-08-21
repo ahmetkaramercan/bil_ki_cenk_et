@@ -130,12 +130,10 @@ public class EnemyMovementDragon : MonoBehaviour
         bool closeEnoughToFire = playerDistance < MAX_DISTANCE_FOR_FIRE;
         if (closeEnoughToFire)
         {
-            Debug.Log("closeEnough" + playerDistance);
             _fireParticle.Play();
         }
         else
         {
-            Debug.Log("notcloseEnough" + playerDistance);
             _fireParticle.Stop();
 
         }

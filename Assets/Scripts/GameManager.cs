@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI _timeText;
+    [SerializeField]
+    private TextMeshProUGUI _bulletAmount;
 
     public GameObject Archery
     {
@@ -92,10 +94,13 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         setThePlayer();
-        
+        setText();
     }
 
-
+    private void setText()
+    {
+        _bulletAmount.SetText("Bullet Amount:" + player[_activePlayer].GetComponent<PlayerController>().getBulletAmount());
+    }
     private void setThePlayer()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

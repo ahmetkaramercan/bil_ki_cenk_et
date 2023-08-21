@@ -583,6 +583,16 @@ namespace StarterAssets
                 _healthBar.UpdateHealthBar(_healthBar.getHealth() * _maxHealth - _bombDamage, _maxHealth);
             }
         }
+
+        public int getBulletAmount()
+        {
+            return totalThrow;
+        }
+
+        public void increaseBulletAmount(int amount)
+        {
+            totalThrow += amount;
+        }
     }
 
 }
