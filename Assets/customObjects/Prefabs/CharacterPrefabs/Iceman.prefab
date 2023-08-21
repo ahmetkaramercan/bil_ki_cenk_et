@@ -85,7 +85,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4646486614197084246
 Transform:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ Transform:
   - {fileID: 6288414213178578936}
   - {fileID: 1131603309852989274}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!95 &5313114795051309338
 Animator:
@@ -333,7 +333,7 @@ MonoBehaviour:
   attackPointForThrow: {fileID: 1131603309852989274}
   objectToThrow: {fileID: 1959729250425484, guid: 5187dfa4d8f19524e8bbf7c6894b7de7,
     type: 3}
-  totalThrow: 0
+  totalThrow: 79
   throwCooldown: 0
   throwForce: 0
   throwUpwardForce: 0
@@ -692,7 +692,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849730115108210666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.040003587, y: 1.3000001, z: -4.4000006}
+  m_LocalPosition: {x: 0.040003587, y: 1.8000001, z: -4.4000006}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1777,7 +1777,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 4.8434, y: 0}
   m_SizeDelta: {x: 19.6867, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2838,7 +2838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.25, z: 0.3}
-  ShoulderOffset: {x: 1, y: 0, z: 0}
+  ShoulderOffset: {x: 1, y: 2.5, z: 0}
   VerticalArmLength: 0
   CameraSide: 0.6
   CameraDistance: 22
@@ -3479,6 +3479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IceParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635794871395842140, guid: 9c17491890c6b8347b38a0378aa677af,
+        type: 3}
+      propertyPath: m_TagString
+      value: IceParticle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

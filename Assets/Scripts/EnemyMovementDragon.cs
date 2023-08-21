@@ -129,10 +129,12 @@ public class EnemyMovementDragon : MonoBehaviour
         bool closeEnoughToFire = playerDistance < MAX_DISTANCE_FOR_FIRE;
         if (closeEnoughToFire)
         {
+            Debug.Log("closeEnough" + playerDistance);
             _fireParticle.Play();
         }
         else
         {
+            Debug.Log("notcloseEnough");
             _fireParticle.Stop();
 
         }
@@ -201,7 +203,6 @@ public class EnemyMovementDragon : MonoBehaviour
     void OnParticleCollision(GameObject obj)
     {
         String particalTag= obj.tag;
-        Debug.Log("Particle tag: 0" + particalTag);
         if (particalTag.Equals("FireParticle"))
         {
             _healthBar.UpdateHealthBar(_healthBar.getHealth() * _maxHealth - _fireDamage, _maxHealth);
@@ -216,7 +217,6 @@ public class EnemyMovementDragon : MonoBehaviour
         }
         else if (particalTag.Equals("BloodParticle"))
         {
-            Debug.Log("Particle tag: 1" + particalTag);
             _healthBar.UpdateHealthBar(_healthBar.getHealth() * _maxHealth - _bombDamage, _maxHealth);
         }
     }

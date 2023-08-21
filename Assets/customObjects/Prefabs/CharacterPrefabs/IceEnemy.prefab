@@ -4406,7 +4406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &650793772271188654
 Transform:
   m_ObjectHideFlags: 0
@@ -4423,7 +4423,7 @@ Transform:
   - {fileID: 964423691754565540}
   - {fileID: 2705674481239022617}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &889966487844204827
 Animator:
@@ -4506,11 +4506,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8937919c92edf24d971c5f118716929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MAX_DISTANCE_FOR_AWAKE: 10
-  MAX_DISTANCE_FOR_FIRE: 5
+  MAX_DISTANCE_FOR_AWAKE: 20
+  MAX_DISTANCE_FOR_FIRE: 10
   RotationSmoothTime: 0.12
   MoveSpeed: 12
   _maxHealth: 100
+  nextText:
+  - {fileID: 0}
 --- !u!1 &6170980802195253775
 GameObject:
   m_ObjectHideFlags: 0
@@ -5488,7 +5490,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -7,10 +7,10 @@ TagManager:
   - CinemachineTarget
   - Enemy
   - BloodParticle
-  - IcePartical
   - FireParticle
   - PoisionParticle
   - Arrow
+  - IceParticle
   layers:
   - Default
   - TransparentFX

@@ -212,31 +212,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Iceman
       objectReference: {fileID: 0}
-    - target: {fileID: 90079404898750052, guid: 4f6988f796f996d49b27a6dba4e79723,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548514349696699928, guid: 4f6988f796f996d49b27a6dba4e79723,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.040003587
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548514349696699928, guid: 4f6988f796f996d49b27a6dba4e79723,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.4000006
-      objectReference: {fileID: 0}
-    - target: {fileID: 3915032680810349818, guid: 4f6988f796f996d49b27a6dba4e79723,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3915032680810349818, guid: 4f6988f796f996d49b27a6dba4e79723,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4646486614197084246, guid: 4f6988f796f996d49b27a6dba4e79723,
         type: 3}
       propertyPath: m_RootOrder
@@ -291,11 +266,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8079760281573102467, guid: 4f6988f796f996d49b27a6dba4e79723,
-        type: 3}
-      propertyPath: totalThrow
-      value: 79
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1549,26 +1519,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2548514349696699928, guid: e1c870a16e0d1ab4fa2952951659a7f6,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.000004196167
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548514349696699928, guid: e1c870a16e0d1ab4fa2952951659a7f6,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.3000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548514349696699928, guid: e1c870a16e0d1ab4fa2952951659a7f6,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.4000006
-      objectReference: {fileID: 0}
-    - target: {fileID: 2574918892524917213, guid: e1c870a16e0d1ab4fa2952951659a7f6,
-        type: 3}
-      propertyPath: field of view
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 3915032680810349818, guid: e1c870a16e0d1ab4fa2952951659a7f6,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2578,6 +2528,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1958571351021309830, guid: eb58e8f2831a51f45a44a261e6710cdd,
+        type: 3}
+      propertyPath: MAX_DISTANCE_FOR_FIRE
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3463451773532074993, guid: eb58e8f2831a51f45a44a261e6710cdd,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2820,11 +2775,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoisionEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 2864586455162836719, guid: 8b0f3236320766346927930c8ae5b7b6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4675070606648005628, guid: 8b0f3236320766346927930c8ae5b7b6,
         type: 3}
       propertyPath: m_RootOrder
@@ -2880,26 +2830,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6417019665360889336, guid: 8b0f3236320766346927930c8ae5b7b6,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6417019665360889336, guid: 8b0f3236320766346927930c8ae5b7b6,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8542099307152308967, guid: 8b0f3236320766346927930c8ae5b7b6,
-        type: 3}
-      propertyPath: MAX_DISTANCE_FOR_FIRE
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8542099307152308967, guid: 8b0f3236320766346927930c8ae5b7b6,
-        type: 3}
-      propertyPath: MAX_DISTANCE_FOR_AWAKE
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2923,41 +2853,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireman
-      objectReference: {fileID: 0}
-    - target: {fileID: 90079404898750052, guid: 3053c1db75e3c3e4e91caa1e3a68c3b4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1568791785363281791, guid: 3053c1db75e3c3e4e91caa1e3a68c3b4,
-        type: 3}
-      propertyPath: totalThrow
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 1568791785363281791, guid: 3053c1db75e3c3e4e91caa1e3a68c3b4,
-        type: 3}
-      propertyPath: throwCooldown
-      value: 0.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548514349696699928, guid: 3053c1db75e3c3e4e91caa1e3a68c3b4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.0399992
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548514349696699928, guid: 3053c1db75e3c3e4e91caa1e3a68c3b4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.3999963
-      objectReference: {fileID: 0}
-    - target: {fileID: 3915032680810349818, guid: 3053c1db75e3c3e4e91caa1e3a68c3b4,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3915032680810349818, guid: 3053c1db75e3c3e4e91caa1e3a68c3b4,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4646486614197084246, guid: 3053c1db75e3c3e4e91caa1e3a68c3b4,
         type: 3}
@@ -3849,18 +3744,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 922549159886492549, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
         type: 3}
-      propertyPath: nextText.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 922549159886492549, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
-        type: 3}
       propertyPath: MAX_DISTANCE_FOR_FIRE
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 922549159886492549, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
         type: 3}
       propertyPath: MAX_DISTANCE_FOR_AWAKE
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 922549159886492549, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
         type: 3}
@@ -3871,21 +3761,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IceEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6037528259715667010, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6285678423789567357, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6285678423789567357, guid: d3a30bbe5f5ff384e9c6d0c584a003fb,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7141,13 +7016,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5349129585228148359, guid: be17295c94c4e2c49a9f57ddfc31f123,
         type: 3}
-      propertyPath: MAX_DISTANCE_FOR_FIRE
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5349129585228148359, guid: be17295c94c4e2c49a9f57ddfc31f123,
-        type: 3}
       propertyPath: MAX_DISTANCE_FOR_AWAKE
-      value: 35
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5575628827720477582, guid: be17295c94c4e2c49a9f57ddfc31f123,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

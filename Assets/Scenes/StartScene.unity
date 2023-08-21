@@ -160,7 +160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -445, y: -415}
+  m_AnchoredPosition: {x: -445, y: -379}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &368357172
@@ -221,7 +221,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1677712064}
         m_TargetAssemblyTypeName: MenuBehav, Assembly-CSharp
-        m_MethodName: ClickCharacter4
+        m_MethodName: ClickCharacter3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1156,7 +1156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -450, y: 541}
+  m_AnchoredPosition: {x: -450, y: 381}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1129062393
@@ -2018,7 +2018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -450, y: -85}
+  m_AnchoredPosition: {x: -450, y: -122}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1955301708
@@ -2079,7 +2079,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1677712064}
         m_TargetAssemblyTypeName: MenuBehav, Assembly-CSharp
-        m_MethodName: ClickCharacter3
+        m_MethodName: ClickCharacter4
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2164,7 +2164,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -450, y: 240}
+  m_AnchoredPosition: {x: -450, y: 137}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016570693

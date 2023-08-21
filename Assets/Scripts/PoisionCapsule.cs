@@ -9,7 +9,7 @@ public class PoisionCapsule : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("DestroyYourself", 5);
+        Invoke("DestroyYourself", 8);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -17,7 +17,7 @@ public class PoisionCapsule : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             _particle = Instantiate(PoisonEffect, this.transform.position, Quaternion.identity);
-            Invoke("DestroyParticle", 5);
+            Invoke("DestroyParticle", 3);
             //Debug.Log("Particle Collision Enter!!");
         }
         //Debug.Log("Collision Enter!!");

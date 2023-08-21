@@ -717,7 +717,7 @@ Transform:
   - {fileID: 7416561716740332567}
   - {fileID: 4575083380082640404}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1206390103060884514
 Animator:
@@ -800,11 +800,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8937919c92edf24d971c5f118716929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MAX_DISTANCE_FOR_AWAKE: 31.6
-  MAX_DISTANCE_FOR_FIRE: 10.58
+  MAX_DISTANCE_FOR_AWAKE: 40
+  MAX_DISTANCE_FOR_FIRE: 10
   RotationSmoothTime: 0.12
   MoveSpeed: 10
   _maxHealth: 100
+  nextText:
+  - {fileID: 0}
 --- !u!1 &3677964538223929612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,7 +1257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5624237928294115979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12, y: 0.33, z: 1.47}
+  m_LocalPosition: {x: 0.12, y: 1.05, z: 1.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2126,6 +2128,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyBloodParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114898131865775154, guid: d9f20a3a4faf4d546939aa5a3f1c5d21,
+        type: 3}
+      propertyPath: m_TagString
+      value: BloodParticle
       objectReference: {fileID: 0}
     - target: {fileID: 8448826380922219376, guid: d9f20a3a4faf4d546939aa5a3f1c5d21,
         type: 3}

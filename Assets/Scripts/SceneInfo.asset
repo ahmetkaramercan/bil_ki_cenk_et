@@ -12,9 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139f91a7d8a5e104487e53adfc112d72, type: 3}
   m_Name: SceneInfo
   m_EditorClassIdentifier: 
-  _gunType: 0
-  destroyedNumber: 0
-  shootNumber: 0
-  hitNumber: 0
-  gameDuration: 0
-  createdEnemyNumber: 0
+  _playerType: 2
