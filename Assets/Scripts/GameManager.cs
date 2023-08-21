@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject[] player = new GameObject[4];
+    [SerializeField]
+    SceneInfo _sceneInfo;
     private int _activePlayer;
 
     private float _curTime;
@@ -72,9 +74,9 @@ public class GameManager : MonoBehaviour
         StartCoroutine(StartTime());
         _gameOver = false;
         _curTime = 0f;
-
-        player[0].SetActive(true);
-        _activePlayer = 0;
+        _activePlayer = -1;
+        player[_sceneInfo._playerType].SetActive(true);
+        _activePlayer = _sceneInfo._playerType;
     }
 
     IEnumerator StartTime()
@@ -117,6 +119,11 @@ public class GameManager : MonoBehaviour
     private void setActivePlayer(int activePlayer)
     {
         if (_activePlayer == activePlayer) return;
+        else if(_activePlayer == -1)
+        {
+            player[activePlayer].SetActive(true);
+            _activePlayer = activePlayer;
+        }
 
         Quaternion oldRot = player[_activePlayer].transform.rotation;
         Vector3 oldPos = player[_activePlayer].transform.position;

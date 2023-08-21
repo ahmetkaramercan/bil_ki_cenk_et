@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1775779, g: 0.22232151, b: 0.304518, a: 1}
+  m_IndirectSpecularColor: {r: 0.17757793, g: 0.22232169, b: 0.30451825, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -291,6 +291,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079760281573102467, guid: 4f6988f796f996d49b27a6dba4e79723,
+        type: 3}
+      propertyPath: totalThrow
+      value: 79
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1539,6 +1544,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archery
       objectReference: {fileID: 0}
+    - target: {fileID: 90079404898750052, guid: e1c870a16e0d1ab4fa2952951659a7f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2548514349696699928, guid: e1c870a16e0d1ab4fa2952951659a7f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1562,12 +1572,12 @@ PrefabInstance:
     - target: {fileID: 3915032680810349818, guid: e1c870a16e0d1ab4fa2952951659a7f6,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3915032680810349818, guid: e1c870a16e0d1ab4fa2952951659a7f6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4646486614197084246, guid: e1c870a16e0d1ab4fa2952951659a7f6,
         type: 3}
@@ -1988,6 +1998,7 @@ MonoBehaviour:
   - {fileID: 1723382490}
   - {fileID: 581012614}
   - {fileID: 78524627}
+  _sceneInfo: {fileID: 11400000, guid: a74536e9aeecf2744b282babcdeb7423, type: 2}
   _timeText: {fileID: 1027705609}
 --- !u!4 &393600771
 Transform:
@@ -2917,6 +2928,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568791785363281791, guid: 3053c1db75e3c3e4e91caa1e3a68c3b4,
+        type: 3}
+      propertyPath: totalThrow
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568791785363281791, guid: 3053c1db75e3c3e4e91caa1e3a68c3b4,
+        type: 3}
+      propertyPath: throwCooldown
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 2548514349696699928, guid: 3053c1db75e3c3e4e91caa1e3a68c3b4,
         type: 3}
