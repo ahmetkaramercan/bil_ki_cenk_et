@@ -22,7 +22,7 @@ public class Arrow : MonoBehaviour
             Invoke("DestroyParticle", 5);
             //Debug.Log("Particle Collision Enter!!");
         }
-        //Debug.Log("Collision Enter!!");
+        Debug.Log("Collision Enter!!" + other.gameObject.name);
         DestroyYourself();
     }
 

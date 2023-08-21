@@ -19,7 +19,7 @@ public class WrongAnswer : MonoBehaviour
             Invoke("Start",2);
             print("WRONG"); // bunu da ayni sekilde sadece atilan oklarla falan olacak sekilde ayarla
         }
-        print("WRONG");
+        print("WRONG" + other.gameObject.tag);
         //Debug.Log("Bu script " + gameObject.name + " objesine bağlıdır.");
 
     }
