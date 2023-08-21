@@ -97,7 +97,8 @@ public class EnemyMovementDragon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isDie() && _player != null)
+        _player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        if (!isDie() && _player != null)
         {
             SetAnimationAndParticles();
             if (_animator.GetBool(_animIDAwake) && !_animator.GetBool(_animIDCloseEnough))
@@ -134,7 +135,7 @@ public class EnemyMovementDragon : MonoBehaviour
         }
         else
         {
-            Debug.Log("notcloseEnough");
+            Debug.Log("notcloseEnough" + playerDistance);
             _fireParticle.Stop();
 
         }
