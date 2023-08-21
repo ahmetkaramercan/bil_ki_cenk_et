@@ -10,6 +10,7 @@ TagManager:
   - IcePartical
   - FireParticle
   - PoisionParticle
+  - Arrow
   layers:
   - Default
   - TransparentFX
